@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+       <ImageView
+           android:id="@+id/imageViewId"
+           android:src="@drawable/rose"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:paddingTop="5dp"
+           android:paddingBottom="5dp"
+           android:paddingRight="2dp"
+           android:scaleType="fitXY"
+           android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            >
+
+            <TextView
+                android:id="@+id/nameId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="Shah Golam Rabbani"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textStyle="bold"
+                android:textSize="20sp"
+
+                />
+            <TextView
+                android:id="@+id/positionId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Minister"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textStyle="normal"
+                android:textSize="17sp"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/regionalConstituenciesNoId"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="15dp"
+                    android:textStyle="normal"
+                    android:text="Dj-3 " />
+
+                <TextView
+                    android:id="@+id/nationalConstituenciesNoId"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textStyle="normal"
+                    android:textSize="15dp"
+                    android:paddingRight="10dp"
+                    android:text="NNN-1"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
