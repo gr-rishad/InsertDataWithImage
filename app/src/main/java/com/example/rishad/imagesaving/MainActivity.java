@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnAdd, btnChoose,btnShow;
     ImageView imageView;
     final int REQUEST_CODE_GALLERY = 999;
-
+    InfoDetails  infoDetails ;
 
     SQLiteHelper sqLiteHelper;
     @Override
@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnChoose.setOnClickListener(this);
         btnAdd.setOnClickListener(this);
+        btnShow.setOnClickListener(this);
+
+        //object create in info details;
+     infoDetails = new InfoDetails();
     }
 
     @Override
@@ -61,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String name = nameEditText.getText().toString().trim();
         String price = priceEditText.getText().toString().trim();
         String shortName = shortEditText.getText().toString().trim();
-      //  byte[] image = imageViewToByte(imageView);
+        byte[] picture = imageViewToByte(imageView);
+
 
         if(v.getId()==R.id.buttonChooseId){
             ActivityCompat.requestPermissions(
@@ -69,8 +74,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     REQUEST_CODE_GALLERY);
         }else if(v.getId()== R.id.buttonAddId){
+
+            infoDetails.setName(name);
+            infoDetails.setPrice(price);
+            infoDetails.setShortName(shortName);
+            infoDetails.setImage(picture);
             try {
-                long rowId=  sqLiteHelper.insertData(name,price,shortName,imageViewToByte(imageView));
+                long rowId=  sqLiteHelper.insertData(infoDetails);
                 if(rowId==-1){
                     Toast.makeText(getApplicationContext(),"Unsuccessfull",Toast.LENGTH_SHORT).show();
                 }else{
@@ -81,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }else if(v.getId()== R.id.buttonShowId){
 
+            Toast.makeText(getApplicationContext(),"Hello Show",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this,ListDataActivity.class);
             startActivity(intent);
         }
@@ -126,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();
-            String path=getPath(uri);
-            Toast.makeText(getApplicationContext(),"Path is : "+path,Toast.LENGTH_SHORT).show();
+            //String path=getPath(uri);
+            //Toast.makeText(getApplicationContext(),"Path is : "+path,Toast.LENGTH_SHORT).show();
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap= BitmapFactory.decodeStream(inputStream);

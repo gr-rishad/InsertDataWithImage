@@ -5,6 +5,14 @@ public class InfoDetails {
     private String name,price,shortName;
     private byte[] image;
 
+    public InfoDetails(String name, String price,byte[] image, String shortName) {
+        this.name = name;
+        this.price = price;
+        this.shortName = shortName;
+        this.image = image;
+    }
+
+    public InfoDetails(){}
 
     public String getName() {
         return name;
@@ -26,7 +34,7 @@ public class InfoDetails {
         return shortName;
     }
 
-    public void setShortName(String shortName) {
+    public void  setShortName(String shortName) {
         this.shortName = shortName;
     }
 

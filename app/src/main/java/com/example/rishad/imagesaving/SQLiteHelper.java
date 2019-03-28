@@ -18,7 +18,7 @@ public class SQLiteHelper  extends SQLiteOpenHelper {
     private static final String IMAGE= "image";
     private static final String PRICE= "price";
     private static final String SHORT_NAME= "short_name";
-    private static final int VERSION_NUMBER= 2;
+    private static final int VERSION_NUMBER= 4;
     private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +
             " "+NAME+" VARCHAR(255)," +
             " "+PRICE+" VARCHAR(255), " +
@@ -54,13 +54,13 @@ public class SQLiteHelper  extends SQLiteOpenHelper {
         }
     }
 
-    public long insertData(String name, String price, String shortName, byte[] image){
+    public long insertData(InfoDetails infoDetails){
         SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
-        contentValues.put(NAME,name);
-        contentValues.put(PRICE, price);
-        contentValues.put(IMAGE, image);
-        contentValues.put(SHORT_NAME, shortName);
+        contentValues.put(NAME,infoDetails.getName());
+        contentValues.put(PRICE, infoDetails.getPrice());
+        contentValues.put(IMAGE, infoDetails.getImage());
+        contentValues.put(SHORT_NAME, infoDetails.getShortName());
 
       long rowId=  sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
       return rowId;
